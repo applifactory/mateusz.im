@@ -1,0 +1,26 @@
+.info
+  font-size: 36px
+  overflow: hidden
+  background: #EDEDED linear-gradient(-180deg, #DDD 0%, #FFFFFF 53%, #DDD 100%);
+  position: relative
+  p
+    max-width: 880px
+    text-align: center
+    margin: 2.5em auto
+    line-height: 1.4
+    position: relative
+    z-index: 1
+  &::before, &::after
+    content: ''
+    display: block
+    height: 150px
+    position: absolute
+    left: 0
+    right: 0
+    z-index: 0
+    opacity: 0.35
+    background-image: radial-gradient(50% 0, 1000px 100px, #888888 0%, rgba(#888888, 0) 50%)
+
+  &::after
+    bottom: 0
+    background-image: radial-gradient(50% 100%, 1000px 100px, #888888 0%, rgba(#888888, 0) 50%)
