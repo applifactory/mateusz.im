@@ -1,5 +1,7 @@
 .info
-  font-size: 36px
+  font-size: 18px
+  +size($smallScreen)
+    font-size: 36px
   overflow: hidden
   background: #EDEDED linear-gradient(-180deg, #DDD 0%, #FFFFFF 53%, #DDD 100%);
   position: relative
@@ -7,6 +9,8 @@
     max-width: 880px
     text-align: center
     margin: 2.5em auto
+    +size($smallScreen)
+      margin: 0.5em auto
     line-height: 1.4
     position: relative
     z-index: 1

@@ -1,0 +1,51 @@
+.skills
+  background: url(../img/skills-bg.jpg) no-repeat center
+  background-size: cover
+  overflow: hidden
+  h2
+    max-width: 500px
+    margin: 2em auto 1.5em
+  ul
+    list-style: none
+    margin: 0 auto 3em
+    padding: 0
+    text-align: center
+    max-width: 300px
+    overflow: hidden
+    padding: 1px
+    li
+      border: solid 2px $gold
+      display: block
+      float: left
+      color: white
+      transition: border 2s ease-out, background 2s ease-out, color 2s ease-out
+      width: 50%
+      text-align: center
+      box-sizing: border-box
+      margin: -1px
+      height: 60px
+      position: relative
+      font-size: 15px
+      font-weight: 300
+      span
+        display: block
+        position: absolute
+        top: 50%
+        left: 0
+        right: 0
+        transform: translate(0, -50%)
+      &:hover
+        background: white
+        color: darken($gold, 30%)
+        border-color: white
+        transition: border 0.2s ease, background 0.2s ease, color 0.2s ease
+  +size($smallScreen)
+    h2
+      max-width: 600px
+    ul
+      max-width: 700px
+      margin-bottom: 6em
+      li
+        font-size: 24px
+        height: 100px
+        width: 25%
