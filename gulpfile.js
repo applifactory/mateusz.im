@@ -8,6 +8,7 @@ var include = require('gulp-include');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
+var babel = require('gulp-babel');
 
 gulp.task('connectDev', function () {
   connect.server({
@@ -37,10 +38,19 @@ gulp.task('css', function(done) {
 gulp.task('js', function(done) {
   gulp.src('src/js/application.js')
     .pipe( include() )
+    .pipe(babel({ presets: ['es2015'] }))
     .pipe( gulp.dest('build/js/') )
     .pipe(connect.reload())
     .on('end', done);
 });
+
+gulp.task('lib', function(done){
+  gulp.src('src/js/lib.js')
+    .pipe( include() )
+    .pipe( gulp.dest('build/js/') )
+    .pipe(connect.reload())
+    .on('end', done);
+})
 
 gulp.task('jade', function(done) {
   gulp.src('src/views/*.html.jade')
@@ -67,7 +77,7 @@ gulp.task('font', function(done) {
   ]).pipe(gulp.dest('build/font')).on('end', done);
 });
 
-gulp.task('assets', ['img', 'font']);
+gulp.task('assets', ['img', 'font', 'lib']);
 
 gulp.task('watch', function() {
   gulp.watch('src/css/**/*.styl', ['css']);

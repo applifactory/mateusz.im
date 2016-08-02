@@ -1,0 +1,91 @@
+.teaser
+  background: url(../img/teaser-bg.jpg) center
+  background-size: cover
+  position: relative
+  max-height: 825px
+  overflow: hidden
+  padding-bottom: 60%
+  +size($largeScreen)
+    padding-bottom: 0
+    height: 750px
+  .works
+    background: url(../img/teaser-works.png) no-repeat center top
+    background-size: contain
+    padding-bottom: 60%
+    position: absolute
+    left: 10px
+    right: 10px
+    top: 80px
+    +size($largeScreen)
+      width: 1075px
+      margin-left: -537px
+      left: 50%
+      right: auto
+  &::after
+    content: ''
+    position: absolute
+    x-index: 1
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: rgba(#28261D, 0.8)
+  .page
+    position: relative
+    z-index: 3
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 95%
+    .logo
+      margin: 0 auto
+      display: block
+      max-width: 40%
+      height: auto
+      .mw-path
+        stroke-dasharray: 800
+        stroke-dashoffset: 0
+        transition: stroke-dashoffset 1.5s 1s
+      .frame-path
+        stroke-dasharray: 1100
+        stroke-dashoffset: 0
+        transition: stroke-dashoffset 1.5s 2.5s
+      .backslash-path
+        stroke-dasharray: 120
+        stroke-dashoffset: 0
+        transition: stroke-dashoffset 0.75s 4s
+    h1
+      font-size: 25px
+      +size($smallScreen)
+        font-size: 57px
+      font-weight: 100
+      color: #FFF
+      text-transform: uppercase
+      transition: opacity 0.5s 3s, top 0.5s 3s
+      position: relative
+      text-align: center
+      margin-bottom: 0
+      span
+        font-size: 33px
+        +size($smallScreen)
+          font-size: 75px
+        font-weight: 500
+        display: block
+        color: $gold
+        background: $gold -webkit-linear-gradient(0deg, darken($gold, 20%) 30%, lighten($gold, 30%) 50%, darken($gold, 10%) 70%)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+  &.hidden
+    h1
+      opacity: 0
+      top: 100px
+    .logo
+      .mw-path
+        stroke-dashoffset: 800
+      .frame-path
+        stroke-dashoffset: 1100
+      .backslash-path
+        stroke-dashoffset: 120
+      .mw-path, .frame-path, .backslash-path
+        transition: none
