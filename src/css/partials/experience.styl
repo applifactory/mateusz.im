@@ -1,0 +1,88 @@
+.experience
+  background: #2A2A2C
+  h2
+    color: white
+    -webkit-background-clip: none
+    -webkit-text-fill-color: white
+    margin: 2em auto 0
+    font-weight: 300
+  ul
+    list-style: none
+    margin: 0 1em
+    padding: 0
+    li
+      font-weight: 300
+      margin: 3em 0
+      .year
+        background: $gold
+        color: $darkText
+        font-size: 20px
+        padding: 3px 5px
+      .company
+        color: $gold
+        font-size: 38px
+      ul.responsibilities
+        margin: 0 0
+        color: $grayText
+        font-size: 28px
+        li
+          margin: 0
+      &:nth-child(2)
+        .year
+          background: darken($gold, 16%)
+      &:nth-child(3)
+        .year
+          background: darken($gold, 30%)
+  +size($smallScreen)
+    position: relative
+    padding: 5em 0
+    &::before
+      content: ''
+      display: block
+      position: absolute
+      top: 0
+      bottom: 0
+      left: -145px
+      width: 50%
+      background: darken($gray, 15%)
+      border-right: dashed 1px darken($gold, 20%)
+    h2
+      position: absolute
+      text-align: center
+      width: 340px
+      height: 50px
+      top: 175px
+      right: 50%
+      margin-right: 26px
+      transform: rotate(-90deg)
+    ul
+      width: 380px
+      margin: 0 auto
+      padding-left: 60px
+      li
+        position: relative
+        padding-bottom: 80px
+        padding-left: 50px
+        margin: 0
+        .year
+          position: absolute
+          top: 0
+          left: 0
+          bottom: 0
+          width: 32px
+          padding: 0
+          box-shadow: inset 15px 0 10px -5px rgba(#000, 0.1), inset -15px 0 10px -5px rgba(#000, 0.1)
+          span
+            text-align: right
+            position: absolute
+            display: block
+            width: 54px
+            height: 25px
+            top: 23px
+            left: 50%
+            margin-left: -28px
+            transform: rotate(-90deg)
+        ul.responsibilities
+          padding: 0
+          li
+            padding: 0
