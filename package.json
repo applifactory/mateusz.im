@@ -31,6 +31,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "retinajs": "^2.1.0"
   }
 }

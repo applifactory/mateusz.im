@@ -1,0 +1,99 @@
+.works
+  background: $gold
+  overflow: hidden
+  position: relative
+  h2
+    color: white
+    background: none
+    -webkit-background-clip: none
+    -webkit-text-fill-color: white
+    position: relative
+    z-index: 1
+  &::before, &::after
+    content: ''
+    display: block
+    height: 150px
+    position: absolute
+    left: 0
+    right: 0
+    z-index: 0
+    opacity: 0.35
+    background-image: radial-gradient(50% 0, 1000px 100px, lighten($gold, 50%) 0%, rgba($gold, 0) 50%)
+  &::after
+    bottom: 0
+    background-image: radial-gradient(50% 100%, 1000px 100px, darken($gold, 50%) 0%, rgba($gold, 0) 50%)
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    position: relative
+    z-index: 1
+    text-align: center
+    li
+      display: inline-block
+      width: 264px
+      height: 198px
+      background: lighten($gold, 20%)
+      border: solid 4px lighten($gold, 40%)
+      margin: 10px 0
+      box-shadow: 0px 12px 24px 0px rgba(0,0,0,0.10)
+      position: relative
+      +size($smallScreen/2)
+        margin: 10px
+      +size($largeScreen)
+        margin: 20px
+      img
+        display: block
+        width: 100%
+      a
+        display: block
+        position: absolute
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        text-align: left
+        font-size: 18px
+        font-weight: 300
+        color: #FFFFFF
+        border: none
+        text-decoration: none
+        background: rgba(black, 0.7)
+        padding: 10px
+        opacity: 0
+        transition: opacity 0.2s ease
+        &:hover
+          opacity: 1
+      i
+        display: block
+        padding-right: 25px
+        height: 19px
+        position: absolute
+        bottom: 10px
+        right: 10px
+        background-size: 19px 19px
+        background-repeat: no-repeat
+        background-position: right
+        font-size: 11px
+        line-height: 19px
+        &::after
+          content: 'View on'
+          font-style: normal
+        &.dribbble
+          background-image: url(../img/icon-dribbble.png)
+          +retina()
+            background-image: url(../img/icon-dribbble@2x.png)
+          &::after
+            content: 'View on Dribbble'
+        &.codepen
+          background-image: url(../img/icon-codepen.png)
+          +retina()
+            background-image: url(../img/icon-codepen@2x.png)
+          &::after
+            content: 'View on Codepen'
+        &.github
+          background-image: url(../img/icon-github.png)
+          +retina()
+            background-image: url(../img/icon-github@2x.png)
+          &::after
+            content: 'View on GitHub'
