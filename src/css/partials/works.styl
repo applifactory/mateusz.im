@@ -32,7 +32,7 @@
     li
       display: inline-block
       width: 264px
-      height: 198px
+      max-width: 95%
       background: lighten($gold, 20%)
       border: solid 4px lighten($gold, 40%)
       margin: 10px 0
@@ -40,6 +40,7 @@
       position: relative
       +size($smallScreen/2)
         margin: 10px
+        height: 198px
       +size($largeScreen)
         margin: 20px
       img
