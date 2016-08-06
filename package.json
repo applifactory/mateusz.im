@@ -7,7 +7,12 @@
     "start": "npm-run-all build watch",
     "build": "gulp build",
     "watch": "gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "remove-build": "rm -rf build mateusz.im mateusz.im.tar.gz",
+    "build-tar": "mv build mateusz.im && tar -zcvf mateusz.im.tar.gz mateusz.im",
+    "upload": "scp ./mateusz.im.tar.gz mateusz.im:~",
+    "unpack-remote": "ssh mateusz.im 'rm -rf mateusz.im && tar zxf mateusz.im.tar.gz && cp mateusz.im/* /var/www/mateusz.im/ -r'",
+    "deploy": "npm-run-all remove-build build build-tar upload unpack-remote remove-build"
   },
   "repository": {
     "type": "git",
