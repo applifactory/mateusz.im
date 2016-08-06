@@ -1,0 +1,116 @@
+.contact
+  overflow: hidden
+  text-align: center
+  background: #000000 radial-gradient(50% 50%, #171717 30%, #000000 100%) no-repeat center
+  background-size: 100% 1000px
+  position: relative
+  +size($smallScreen)
+    height: 355px
+    position: relative
+  &::after
+    content: ''
+    display: block
+    background: url(../img/contact-noise.png) repeat center
+    background-size: 300px 300px
+    +retina()
+      background-image: url(../img/contact-noise@2x.png)
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 1
+  .container
+    z-index: 2
+    position: relative
+    +size($smallScreen)
+      margin: 0 auto
+      background: red
+      position: relative
+    +size($mediumScreen)
+      width: 750px
+    +size($largeScreen)
+      width: 910px
+  h2
+    -webkit-background-clip: none
+    -webkit-text-fill-color: $blackText
+    display: inline-block
+    margin: 2em 10px 10px
+    +size($smallScreen)
+      position: absolute
+      left: 0
+      top: 157px
+      margin: 0
+    a
+      display: block
+      box-sizing: border-box
+      font-size: 31px
+      font-weight: 500
+      text-decoration: none
+      color: $blackText
+      padding: 0.31em 0.5em
+      +size($smallScreen)
+        font-size: 21px
+        height: 39px
+        line-height: 26px
+      background: $gold
+      &:hover
+        background: lighten($gold, 25%)
+      &:active
+        background: darken($gold, 15%)
+  ul.links
+    list-style: none
+    margin: 0
+    padding: 0
+    +size($smallScreen)
+      position: absolute
+      right: 0
+      top: 157px
+      margin: 0
+      text-align: right
+    li
+      a
+        border: none
+        text-align: left
+      &.linkedin, &.dribbble, &.codepen, &.twitter
+        display: inline-block
+        overflow: hidden
+        text-indent: -500px
+        background: $gold
+        &:hover
+          background: lighten($gold, 25%)
+        &:active
+          background: darken($gold, 15%)
+        a
+          display: block
+          width: 39px
+          height: 39px
+          background: url(../img/contact-icons.png)
+          +retina()
+            background-image: url(../img/contact-icons@2x.png)
+            background-size: 156px 39px
+      &.linkedin a
+        background-position: -39px 0
+      &.dribbble a
+        background-position: -78px 0
+      &.codepen a
+        background-position: -117px 0
+      &.copyright
+        color: white
+        font-size: 12px
+        font-weight: 300
+  .mateusz
+    margin-top: 2em
+    background: url(../img/mateusz-witalinski.png) no-repeat center
+    background-size: 305px 301px
+    height: 301px
+    position: relative
+    z-index: 2
+    +retina()
+      background-image: url(../img/mateusz-witalinski@2x.png)
+    +size($smallScreen)
+      width: 305px
+      position: absolute
+      bottom: 0
+      left: 50%
+      margin-left: -152px
