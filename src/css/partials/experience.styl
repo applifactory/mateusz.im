@@ -89,3 +89,14 @@
           padding: 0
           li
             padding: 0
+  +size($smallScreen)
+    ul > li
+      .year, .company, .responsibilities
+        transition: all 0.5s ease
+      &.hidden
+        .year
+          opacity: 0
+          transform: translate(0, 100px)
+        .company, .responsibilities
+          opacity: 0
+          transform: translate(100px, 0)

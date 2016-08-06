@@ -62,9 +62,10 @@
         background: rgba(black, 0.7)
         padding: 10px
         opacity: 0
-        transition: opacity 0.2s ease
+        transition: opacity 0.7s 0.1s ease
         &:hover
           opacity: 1
+          transition: opacity 0.3s ease
       i
         display: block
         padding-right: 25px
@@ -98,3 +99,11 @@
             background-image: url(../img/icon-github@2x.png)
           &::after
             content: 'View on GitHub'
+  +size($smallScreen)
+    ul
+      transition: all 0.5s 0.3s ease
+    &.hidden
+      ul
+        transform: translate(0, 100px) scale(1.5)
+        opacity: 0
+        transition: none

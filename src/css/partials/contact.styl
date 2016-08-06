@@ -27,10 +27,11 @@
       margin: 0 auto
       background: red
       position: relative
+      width: 650px
     +size($mediumScreen)
       width: 750px
     +size($largeScreen)
-      width: 910px
+      width: 902px
   h2
     -webkit-background-clip: none
     -webkit-text-fill-color: $blackText
@@ -114,3 +115,14 @@
       bottom: 0
       left: 50%
       margin-left: -152px
+  +size($smallScreen)
+    h2, ul.links
+      transition: opacity 0.5s 0.3s ease, transform 0.5s 0.3s ease
+    &.hidden
+      h2, ul.links
+        transition: none
+        opacity: 0
+      h2
+        transform: translate(-200px, 0)
+      ul.links
+        transform: translate(200px, 0)
