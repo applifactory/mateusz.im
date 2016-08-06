@@ -2,12 +2,13 @@
   background: url(../img/skills-bg.jpg) no-repeat center
   background-size: cover
   overflow: hidden
+  text-align: center
   h2
     max-width: 500px
     margin: 2em auto 1.5em
   ul
     list-style: none
-    margin: 0 auto 3em
+    margin: 0 auto 2em
     padding: 0
     text-align: center
     max-width: 300px
@@ -20,7 +21,6 @@
       color: white
       transition: border 2s 0.2s ease-out, background 2s 0.2s ease-out, color 2s 0.2s ease-out
       width: 50%
-      text-align: center
       box-sizing: border-box
       margin: -1px
       height: 60px
@@ -40,20 +40,67 @@
           color: darken($gold, 30%)
           border-color: white
           transition: border 0.2s ease, background 0.2s ease, color 0.2s ease
+  .methodologies
+    display: inline-block
+    border: solid 2px $gold
+    background: rgba($gold, 0.3)
+    color: white
+    font-weight: 300
+    padding: 0.3em 0.6em 0.25em
+    font-size: 15px
+    margin-bottom: 3em
+    max-width: 180px
+    span
+      display: inline-block
+      background: url(../img/skills-heart.svg) no-repeat center 1px
+      background-size: auto 13px
+      overflow: hidden
+      text-indent: -500px
+      width: 16px
+      vertical-align: middle
+      animation: heart-beat infinite 1.2s
+      +size($smallScreen)
+        background: url(../img/skills-heart.svg) no-repeat center 4px
+        background-size: 20px 18px
+        width: 22px
   +size($smallScreen)
     h2
       max-width: 600px
     ul
       max-width: 700px
-      margin-bottom: 6em
+      margin-bottom: 3em
       li
         font-size: 24px
         height: 100px
         width: 25%
+    .methodologies
+      margin-bottom: 2em
+      font-size: 24px
+      max-width: none
+      transition: background 2s 0.2s ease-out, color 2s 0.2s ease-out, border-color 2s 0.2s ease-out, opacity 0.5s ease, transform 0.5s ease
+      &:hover
+        background: white
+        color: darken($gold, 30%)
+        border-color: white
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease
     ul
-      transition: all 0.5s ease
+      transition: opacity 0.5s ease, transform 0.5s ease
     &.hidden
-      ul
+      ul, .methodologies
         transition: all 0.2s ease
-        transform: translate(0, 100px) scale(1.5)
+        transform: translate(0, 200px) scale(1.5)
         opacity: 0
+
+@keyframes heart-beat
+  0%
+    transform: scale(1)
+  40%
+    transform: scale(1)
+  50%
+    transform: scale(1.4)
+  60%
+    transform: scale(1)
+  70%
+    transform: scale(1.2)
+  90%
+    transform: scale(1)
