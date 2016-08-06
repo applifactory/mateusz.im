@@ -18,7 +18,7 @@
       display: block
       float: left
       color: white
-      transition: border 2s ease-out, background 2s ease-out, color 2s ease-out
+      transition: border 2s 0.2s ease-out, background 2s 0.2s ease-out, color 2s 0.2s ease-out
       width: 50%
       text-align: center
       box-sizing: border-box
@@ -54,6 +54,6 @@
       transition: all 0.5s ease
     &.hidden
       ul
-        transition: all 0.1s ease
-        transform: translate(0, 100px)
+        transition: all 0.2s ease
+        transform: translate(0, 100px) scale(1.5)
         opacity: 0
