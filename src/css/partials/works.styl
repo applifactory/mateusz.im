@@ -9,6 +9,9 @@
     -webkit-text-fill-color: white
     position: relative
     z-index: 1
+    margin-top: 2em
+    +size($smallScreen)
+      margin-top: 3em
   &::before, &::after
     content: ''
     display: block
@@ -29,6 +32,9 @@
     position: relative
     z-index: 1
     text-align: center
+    margin-bottom: 2em
+    +size($smallScreen)
+      margin-bottom: 5em
     li
       display: inline-block
       width: 264px
@@ -100,10 +106,13 @@
           &::after
             content: 'View on GitHub'
   +size($smallScreen)
-    ul
-      transition: all 0.5s 0.3s ease
+    li
+      transition: opacity 0.3s ease, transform 0.3s ease
+      for num in (1..15)
+        &:nth-child({num})
+          transition-delay: (0.3+num*0.2) *1s
     &.hidden
-      ul
-        transform: translate(0, 200px) scale(1.5)
+      li
+        transform: scale(1.5)
         opacity: 0
         transition: none
