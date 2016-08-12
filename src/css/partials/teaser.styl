@@ -5,9 +5,34 @@
   max-height: 825px
   overflow: hidden
   padding-bottom: 60%
+  .next
+    display: none
+    @media screen and (min-height: 500px) and (max-height: 1035px) and (min-width: $mediumScreen)
+      display: block
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: 20px
+      border-color: $gold transparent transparent
+      position: absolute
+      bottom: 0px
+      left: 50%
+      margin-left: -5px
+      z-index: 2
+      cursor: pointer
+      transition: 0.3s 2s ease
+      transition-property: transform, opacity
+      opacity: 0.7
+      &:hover
+        animation: next-bounce infinite 1s
+    @media screen and (min-height: 600px)
+      bottom: 10px
+      border-width: 30px
+      margin-left: -15px
   +size($largeScreen)
     padding-bottom: 0
     height: 750px
+    max-height: 100vh
   .works
     background: url(../img/teaser-works.png) no-repeat center top
     background-size: contain
@@ -96,3 +121,17 @@
       transition: transform 0.1s 0s, opacity 0.1s 0s
       transform: translate(0, 400px) scale(1.5)
       opacity: 0
+    .next
+      opacity: 0
+      transform: translate(0, 100px)
+
+
+@keyframes next-bounce
+  0%
+    opacity: 1
+  40%
+    transform: scale(1.05) translate(0, 2px)
+    border-top-color: lighten($gold, 30%)
+    opacity: 1
+  100%
+    opacity: 1

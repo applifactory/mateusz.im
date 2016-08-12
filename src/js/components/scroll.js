@@ -36,4 +36,7 @@ $(function(){
     });
   });
   $(window).trigger('scroll');
+  $(window).on('resize', function(){
+    $(window).trigger('scroll');
+  })
 })
