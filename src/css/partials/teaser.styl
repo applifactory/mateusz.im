@@ -56,6 +56,7 @@
     bottom: 0
     left: 0
     background: rgba(#28261D, 0.8)
+    transition: all 0.3s ease
   .page
     position: relative
     z-index: 3
@@ -102,7 +103,7 @@
         background: $gold -webkit-linear-gradient(0deg, darken($gold, 20%) 30%, lighten($gold, 30%) 50%, darken($gold, 10%) 70%)
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
-  &.hidden
+  &.hidden, &.loading
     h1
       opacity: 0
       top: 100px
@@ -124,6 +125,34 @@
     .next
       opacity: 0
       transform: translate(0, 100px)
+  &.loading
+    &::after
+      background: $gray
+    &::before
+      content: ''
+      width: 40px
+      height: 40px
+      background: $gold
+      position: absolute;
+      z-index: 1
+      left: 50%
+      top: 50%
+      margin: -20px
+      animation: flip-rotate infinite 2s
+
+
+@keyframes flip-rotate
+  0%
+    transform: scale(1, 1);
+  25%
+    transform: scale(0, 1)
+    opacity: 0.25
+  50%
+    transform: scale(1, 1);
+    opacity: 1
+  75%
+    transform: scale(1, 0);
+    opacity: 0.25
 
 
 @keyframes next-bounce

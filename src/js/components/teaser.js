@@ -7,3 +7,25 @@ $(() => {
     })
   }
 })
+
+$(() => {
+  let $teaser = $('.teaser'),
+      assets = ['teaser-bg.jpg', 'teaser-works.png'],
+      assetsLoaded = 0;
+  assets.forEach((src) => {
+    let $img = $(`<img src="/img/${src}" display="none"/>`);
+    if ( $img[0].naturalHeight ) {
+      assetsLoaded++;
+    } else {
+      $img.on('load', () => {
+        assetsLoaded++;
+        if ( assetsLoaded == assets.length ) {
+          $('.teaser').removeClass('loading');
+        }
+      });
+    }
+  })
+  if ( assetsLoaded < assets.length ) {
+    $teaser.addClass('loading');
+  }
+})
