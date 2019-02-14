@@ -10,7 +10,7 @@ $(() => {
 
 $(() => {
   let $teaser = $('.teaser'),
-      assets = ['teaser-bg.jpg', 'teaser-works.png'],
+      assets = ['teaser-bg.jpg', 'teaser-works--small.png'],
       assetsLoaded = 0;
   assets.forEach((src) => {
     let $img = $(`<img src="/img/${src}" display="none"/>`);
