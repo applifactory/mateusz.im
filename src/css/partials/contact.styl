@@ -73,7 +73,7 @@
       a
         border: none
         text-align: left
-      &.linkedin, &.dribbble, &.codepen, &.twitter
+      &.linkedin, &.dribbble, &.codepen, &.twitter, &.instagram
         display: inline-block
         overflow: hidden
         text-indent: -500px
@@ -87,15 +87,18 @@
           width: 39px
           height: 39px
           background: url(../img/contact-icons.png)
+          background-repeat: no-repeat
           +retina()
             background-image: url(../img/contact-icons@2x.png)
-            background-size: 156px 39px
+            background-size: 195px 39px
       &.linkedin a
         background-position: -39px 0
       &.dribbble a
         background-position: -78px 0
       &.codepen a
         background-position: -117px 0
+      &.instagram a
+        background-position: -156px 0
       &.copyright
         color: white
         font-size: 12px
