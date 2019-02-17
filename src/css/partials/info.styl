@@ -17,16 +17,21 @@
   &::before, &::after
     content: ''
     display: block
-    height: 150px
+    height: 20px
+    +size($smallScreen)
+      height: 80px
+    width: 100%
+    max-width: 1000px
     position: absolute
-    left: 0
-    right: 0
+    left: 50%
+    transform: translate(-50%, 0)
     z-index: 0
     opacity: 0.35
-    background-image: radial-gradient(50% 0, 1000px 100px, #888888 0%, rgba(#888888, 0) 50%)
+  &::before
+    background-image: radial-gradient(ellipse at top, lighten($gold, 50%) 0%, rgba($gold, 0) 50%)
   &::after
     bottom: 0
-    background-image: radial-gradient(50% 100%, 1000px 100px, #888888 0%, rgba(#888888, 0) 50%)
+    background-image: radial-gradient(ellipse at bottom, darken($gold, 50%) 0%, rgba($gold, 0) 50%)
   +size($smallScreen)
     p
       transition: all 0.5s 0.2s ease
