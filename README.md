@@ -4,7 +4,6 @@
 To run it locally make sure you have got `NodeJS` with `npm` installed.
 
 __Install__  
-- `npm install -g gulp`
 - `npm install`  
 
 __Run__

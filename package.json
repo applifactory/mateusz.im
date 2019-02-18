@@ -37,6 +37,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-stylus": "^2.5.0",
     "jquery": "^3.1.0",
+    "npm-run-all": "^4.1.2",
     "retinajs": "^2.1.0"
   }
 }
