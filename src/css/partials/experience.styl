@@ -4,35 +4,129 @@
     color: white
     -webkit-background-clip: none
     -webkit-text-fill-color: white
-    margin: 2em auto 0
+    margin: 60px 0 10px
+    +size($smallScreen)
+      margin: 3px 0
     font-weight: 300
-  ul
+  & > ul
     list-style: none
-    margin: 0 1em
+    margin: 0 1em 2em
     padding: 0
-    li
+    position: relative
+    +size($smallScreen)
+      &::before, &::after
+        content: ''
+        display: block
+        width: 0
+        height: 0
+        position: absolute
+        border: solid transparent
+        border-width: 28px 16px
+      &::before
+        top: -56px
+        border-bottom-color: lighten($gold, 15%)
+      &::after
+        bottom: -56px
+        border-top-color: darken($gold, 45%)
+    & > li
       font-weight: 300
-      margin: 3em 0
+      padding: 45px
+      cursor: pointer
+      outline: none
       .year
         background: $gold
         color: $darkText
         font-size: 20px
         padding: 3px 5px
+        margin-bottom: 1em
+        position: relative
+        +size($smallScreen)
+          margin-bottom: 0
+      &:first-of-type
+        .year::after
+          content: 'Now'
+          position: absolute
+          right: 6px
+          +size($smallScreen)
+            display: block
+            width: 54px
+            height: 25px
+            top: 20px
+            left: 50%
+            margin-left: -28px
+            transform: rotate(-90deg)
       .company
         color: $gold
         font-size: 28px
+      &::before
+        content: ''
+        display: block
+        width: 0
+        height: 0
+        position: absolute
+        border: solid transparent
+        border-width: 17px 15px
+        top: 50%
+        left: 12px
+        margin-top: -17px
+        border-left-color: $gold
+        opacity: 0
+        transition: all 0.3s ease
+      &:focus:not(.hidden)
+        outline: none
+        +size($smallScreen)
+          ul.responsibilities
+            li p
+              max-height: 100px
+      &:hover:not(.hidden), &:focus:not(.hidden)
+        +size($smallScreen)
+          &::before
+            left: 32px
+            opacity: 1
       ul.responsibilities
+        list-style: none
         margin: 0 0
         color: $grayText
         font-size: 22px
+        padding: 0
         li
           margin: 0
-      &:nth-child(2)
+          position: relative
+          h3
+            font-size: 18px
+            margin: 4px 0
+            +size($smallScreen)
+              font-size: 24px
+              margin: 10px 0 4px
+            font-weight: 100
+            color: $grayTextHead
+            text-align: left 
+          p
+            font-size: 16px
+            margin: 0
+            overflow: hidden
+            max-height: 0px
+            transition: all 0.2s ease
+      &:nth-child(2) 
         .year
-          background: darken($gold, 16%)
-      &:nth-child(3)
+          background: darken($gold, 10%)
+        &::before
+          border-left-color: darken($gold, 10%)
+      &:nth-child(3) 
+        .year
+          background: darken($gold, 20%)
+        &::before
+          border-left-color: darken($gold, 20%)
+      &:nth-child(4)
         .year
           background: darken($gold, 30%)
+        &::before
+          border-left-color: darken($gold, 30%)
+      &:nth-child(5)
+        .year
+          background: darken($gold, 40%)
+        &::before
+          border-left-color: darken($gold, 40%)
   +size($smallScreen)
     position: relative
     padding: 5em 0
@@ -42,7 +136,7 @@
       position: absolute
       top: 0
       bottom: 0
-      left: -145px
+      left: -245px
       width: 50%
       background: darken($gray, 15%)
       border-right: dashed 1px darken($gold, 20%)
@@ -51,18 +145,17 @@
       text-align: center
       width: 340px
       height: 50px
-      top: 175px
+      top: 250px
       right: 50%
-      margin-right: 26px
+      margin-right: 146px
       transform: rotate(-90deg)
     ul
-      width: 380px
+      width: 582px
       margin: 0 auto
       padding-left: 60px
       li
         position: relative
-        padding-bottom: 80px
-        padding-left: 50px
+        padding: 25px 35px 35px 75px
         margin: 0
         .year
           position: absolute
@@ -71,14 +164,13 @@
           bottom: 0
           width: 32px
           padding: 0
-          box-shadow: inset 15px 0 10px -5px rgba(#000, 0.1), inset -15px 0 10px -5px rgba(#000, 0.1)
           span
-            text-align: right
+            text-align: left
             position: absolute
             display: block
             width: 54px
             height: 25px
-            top: 23px
+            bottom: 23px
             left: 50%
             margin-left: -28px
             transform: rotate(-90deg)
@@ -87,6 +179,7 @@
         ul.responsibilities
           font-size: 28px
           padding: 0
+          width: auto
           li
             padding: 0
   +size($smallScreen)
