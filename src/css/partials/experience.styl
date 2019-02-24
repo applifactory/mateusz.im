@@ -78,11 +78,16 @@
           ul.responsibilities
             li p
               max-height: 100px
-      &:hover:not(.hidden), &:focus:not(.hidden)
-        +size($smallScreen)
+      +size($smallScreen)
+        transition: background 0.2s ease
+        &:hover:not(.hidden), &:focus:not(.hidden)
           &::before
             left: 32px
             opacity: 1
+        &:hover:not(.hidden)
+          background: rgba($gold, 0.05)
+        &:focus:not(.hidden)
+          background: rgba($gold, 0.03)
       ul.responsibilities
         list-style: none
         margin: 0 0
