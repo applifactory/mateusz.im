@@ -70,6 +70,10 @@ gulp.task('img', function(done) {
   gulp.src('src/assets/img/**/*').pipe(gulp.dest('build/img')).on('end', done);
 });
 
+gulp.task('ico', function(done) {
+  gulp.src('src/assets/ico/*').pipe(gulp.dest('build')).on('end', done);
+});
+
 gulp.task('font', function(done) {
   gulp.src([
     'src/vendors/fontello/font/**/*',
@@ -77,7 +81,7 @@ gulp.task('font', function(done) {
   ]).pipe(gulp.dest('build/font')).on('end', done);
 });
 
-gulp.task('assets', ['img', 'font', 'lib']);
+gulp.task('assets', ['img', 'font', 'lib', 'ico']);
 
 gulp.task('watch', function() {
   gulp.watch('src/css/**/*.styl', ['css']);
