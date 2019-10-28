@@ -5,7 +5,7 @@ const concat = require('gulp-concat');
 const minifyCss = require('gulp-minify-css');
 const rename = require('gulp-rename');
 const include = require('gulp-include');
-const jade = require('gulp-jade');
+const pug = require('gulp-pug');
 const stylus = require('gulp-stylus');
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
@@ -55,8 +55,8 @@ function lib(cb) {
 }
 
 function templates(cb) {
-  src('src/views/*.html.jade')
-    .pipe(jade({
+  src('src/views/*.html.pug')
+    .pipe(pug({
       pretty: true
     }))
     .pipe(rename(function (path) {
@@ -100,7 +100,7 @@ const assets = parallel(img, font, lib, ico, doc);
 function watchAll(cb) {
   watch('src/css/**/*.styl', css);
   watch('src/js/**/*.js', js);
-  watch('src/views/**/*.jade', templates);
+  watch('src/views/**/*.pug', templates);
   watch(['src/img/**/*', 'src/font/**/*'], assets);
   cb();
 }
