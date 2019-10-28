@@ -1,59 +1,61 @@
-var gulp = require('gulp');
-var connect = require('gulp-connect');
-var gutil = require('gulp-util');
-var concat = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var include = require('gulp-include');
-var jade = require('gulp-jade');
-var stylus = require('gulp-stylus');
-var autoprefixer = require('gulp-autoprefixer');
-var babel = require('gulp-babel');
+const { src, dest, parallel, watch, task } = require('gulp');
+const connect = require('gulp-connect');
+const gutil = require('gulp-util');
+const concat = require('gulp-concat');
+const minifyCss = require('gulp-minify-css');
+const rename = require('gulp-rename');
+const include = require('gulp-include');
+const jade = require('gulp-jade');
+const stylus = require('gulp-stylus');
+const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
 
-gulp.task('connectDev', function () {
+
+function connectDev(cb) {
   connect.server({
     root: ['build'],
     port: 8000,
     livereload: true
   });
-});
+  cb();
+}
 
-gulp.task('css', function(done) {
-  gulp.src('src/css/**/*.css.styl')
+function css(cb) {
+  src('src/css/**/*.css.styl')
     .pipe( stylus({
       errors: true,
       'include css': true,
       'line numbers': true
     }) )
-    .pipe( autoprefixer({ cascade: false }) )
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(rename(function (path) {
       path.basename = path.basename.substr(0, path.basename.length-4);
       path.extname = '.css';
     }))
-    .pipe(gulp.dest('build/css/'))
+    .pipe(dest('build/css/'))
     .pipe(connect.reload())
-    .on('end', done);
-});
+    .on('end', cb);
+}
 
-gulp.task('js', function(done) {
-  gulp.src('src/js/application.js')
-    .pipe( include() )
+function js(cb) {
+  src('src/js/application.js')
+    .pipe(include())
     .pipe(babel({ presets: ['es2015'] }))
-    .pipe( gulp.dest('build/js/') )
+    .pipe(dest('build/js/'))
     .pipe(connect.reload())
-    .on('end', done);
-});
+    .on('end', cb);
+}
 
-gulp.task('lib', function(done){
-  gulp.src('src/js/lib.js')
-    .pipe( include() )
-    .pipe( gulp.dest('build/js/') )
+function lib(cb) {
+  src('src/js/lib.js')
+    .pipe(include())
+    .pipe(dest('build/js/'))
     .pipe(connect.reload())
-    .on('end', done);
-})
+    .on('end', cb);
+}
 
-gulp.task('jade', function(done) {
-  gulp.src('src/views/*.html.jade')
+function templates(cb) {
+  src('src/views/*.html.jade')
     .pipe(jade({
       pretty: true
     }))
@@ -61,39 +63,47 @@ gulp.task('jade', function(done) {
       path.basename = path.basename.substr(0, path.basename.length-5);
       path.extname = '.html';
     }))
-    .pipe(gulp.dest('build/'))
+    .pipe(dest('build/'))
     .pipe(connect.reload())
-    .on('end', done);
-});
+    .on('end', cb);
+  }
 
-gulp.task('img', function(done) {
-  gulp.src('src/assets/img/**/*').pipe(gulp.dest('build/img')).on('end', done);
-});
+function img(cb) {
+  src('src/assets/img/**/*')
+    .pipe(dest('build/img'))
+    .on('end', cb);
+}
 
-gulp.task('ico', function(done) {
-  gulp.src('src/assets/ico/*').pipe(gulp.dest('build')).on('end', done);
-});
+function ico(cb) {
+  src('src/assets/ico/*')
+    .pipe(dest('build'))
+    .on('end', cb);
+}
 
-gulp.task('doc', function(done) {
-  gulp.src('src/assets/doc/*').pipe(gulp.dest('build/doc')).on('end', done);
-});
+function doc(cb) {
+  src('src/assets/doc/*')
+    .pipe(dest('build/doc'))
+    .on('end', cb);
+}
 
-gulp.task('font', function(done) {
-  gulp.src([
+function font(cb) {
+  src([
     'src/vendors/fontello/font/**/*',
     'src/assets/font/**/*'
-  ]).pipe(gulp.dest('build/font')).on('end', done);
-});
+  ])
+    .pipe(dest('build/font'))
+    .on('end', cb);
+}
 
-gulp.task('assets', ['img', 'font', 'lib', 'ico', 'doc']);
+const assets = parallel(img, font, lib, ico, doc);
 
-gulp.task('watch', function() {
-  gulp.watch('src/css/**/*.styl', ['css']);
-  gulp.watch('src/js/**/*.js', ['js']);
-  gulp.watch('src/views/**/*.jade', ['jade']);
-  gulp.watch(['src/img/**/*', 'src/font/**/*'], ['assets']);
-});
+function watchAll(cb) {
+  watch('src/css/**/*.styl', css);
+  watch('src/js/**/*.js', js);
+  watch('src/views/**/*.jade', templates);
+  watch(['src/img/**/*', 'src/font/**/*'], assets);
+  cb();
+}
 
-gulp.task('build', ['css', 'js', 'jade', 'assets']);
-
-gulp.task('default', ['connectDev', 'watch']);
+exports.build = parallel(css, js, templates, assets);
+exports.default = parallel(connectDev, watchAll);
