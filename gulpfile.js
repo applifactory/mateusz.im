@@ -1,8 +1,6 @@
-const { src, dest, parallel, watch, task } = require('gulp');
+const { src, dest, parallel, watch } = require('gulp');
 const connect = require('gulp-connect');
-const gutil = require('gulp-util');
-const concat = require('gulp-concat');
-const minifyCss = require('gulp-minify-css');
+const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const include = require('gulp-include');
 const pug = require('gulp-pug');
@@ -27,6 +25,7 @@ function css(cb) {
       'include css': true,
       'line numbers': true
     }) )
+    .pipe(cleanCSS())
     .pipe(autoprefixer({ cascade: false }))
     .pipe(rename(function (path) {
       path.basename = path.basename.substr(0, path.basename.length-4);
