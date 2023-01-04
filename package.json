@@ -28,7 +28,7 @@
     "gh-pages": "^2.0.1",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-connect": "^5.0.0",
     "gulp-include": "^2.3.0",
